@@ -1,0 +1,20 @@
+server:
+  port: 3100
+
+spring:
+  application:
+    name: config-server
+
+  profiles:
+    active: native,git # 두 가지 프로필을 설정을 추가시킬 수 있다.
+
+  cloud:
+    config:
+      server:
+        native:
+          search-locations: classpath:/configs
+        git: # 원격 레포지토리에 설정파일 조회
+          # 원격 레포지토리 주소
+          uri: https://github.com/SilenceTale/projectConfigs.git
+          searchPaths: configs
+          default-label: master #마스터 브랜치에서 이 레포지토리를 조회
